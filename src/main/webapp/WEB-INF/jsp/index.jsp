@@ -14,7 +14,7 @@
     <h2>
         Welcome to the welcome page of Budget Checker WEB Application!
     </h2>
-    <img src="${pageContext.request.contextPath}/images/welcome_BCW.jpg"
+    <img src="${pageContext.request.contextPath}/resources/images/welcome_BCW.jpg"
         width="1680"/>
 </div>
 </body>
