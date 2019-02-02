@@ -3,10 +3,8 @@ package com.budgetcheckerweb.controller;
 import com.budgetcheckerweb.model.User;
 import com.budgetcheckerweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -20,6 +18,23 @@ public class UserController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public @ResponseBody List<User> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @RequestMapping(value = "/validate", method = RequestMethod.GET)
+    public ModelAndView validateUser() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userFromServer", new User());
+        modelAndView.setViewName("user_check_page");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/check", method = RequestMethod.POST)
+    public @ResponseBody String checkUser(@ModelAttribute("userFromServer") User user) {
+        if (userService.getAllUsers().contains(user)) {
+            return "valid";
+        }
+
+        return "invalid";
     }
 
 }
