@@ -11,10 +11,10 @@ import java.util.List;
 public class UserDao {
 
     private List<User> users = Arrays.asList(
-            new User("Kseniia", "Shavonina",
-                    "mymail@yandex.ru", "1", new BigDecimal("7777777.77")),
-            new User("John", "Doe",
-                    "johndoe@gmail.com", "2", BigDecimal.ZERO)
+            new User("mymail@yandex.ru", "1",
+                    "Kseniia", "Shavonina", new BigDecimal("7777777.77")),
+            new User("johndoe@gmail.com", "2",
+                    "John", "Doe", BigDecimal.ZERO)
     );
 
     public List<User> getAllUsers() {
