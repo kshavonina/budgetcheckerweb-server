@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Spring MVC Tutorial Series by Crunchify.com</title>
@@ -11,12 +12,10 @@
 <br>
 <div style="text-align: center">
     <h2>
-        Hey You..!! This is your 1st Spring MCV Tutorial..<br> <br>
+        Welcome to the welcome page of Budget Checker WEB Application!
     </h2>
-    <h3>
-        See Welcome Message...(to
-        check Spring MVC Controller... @RequestMapping("/welcome"))
-    </h3>
+    <img src="${pageContext.request.contextPath}/images/welcome_BCW.jpg"
+        width="1680"/>
 </div>
 </body>
 </html>
