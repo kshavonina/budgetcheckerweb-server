@@ -14,10 +14,16 @@
     <mvc:annotation-driven/>
     <mvc:view-controller path="/" view-name="index"/>
     <mvc:resources mapping="/resources/**" location="/images" cache-period="31556926"/>
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 
     <bean id="viewResolver" class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="swagger2Config"
+          class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration">
     </bean>
 
 </beans>

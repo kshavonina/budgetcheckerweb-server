@@ -2,6 +2,7 @@ package com.budgetcheckerweb.controller;
 
 import com.budgetcheckerweb.model.User;
 import com.budgetcheckerweb.service.UserService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @RestController
+@Api(value = "user_controller", description = "Controller for managing users")
 @RequestMapping("/users")
 public class UserController {
 
