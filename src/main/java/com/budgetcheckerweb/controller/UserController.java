@@ -4,6 +4,7 @@ import com.budgetcheckerweb.model.User;
 import com.budgetcheckerweb.service.UserService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,6 +38,12 @@ public class UserController {
         }
 
         return "invalid";
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    public @ResponseBody String testRequest() {
+        return "fine";
     }
 
 }

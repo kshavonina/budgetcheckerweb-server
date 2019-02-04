@@ -34,7 +34,7 @@
 
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/nnj/*</url-pattern>
     </filter-mapping>
 
     <!-- Loads Spring Security config file -->
