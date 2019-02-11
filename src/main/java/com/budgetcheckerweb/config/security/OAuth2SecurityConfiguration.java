@@ -28,8 +28,11 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-        .withUser("my-trusted-client").password("{noop}secret").roles("ADMIN").and()
-        .withUser("bob").password("abc123").roles("USER");
+				.withUser("bill@mail.ru").password("{noop}bill123").roles("USER")
+				.and()
+				.withUser("tom@yandex.ru").password("{noop}tom123").roles("USER")
+				.and()
+				.withUser("admin@gmail.com").password("{noop}admin123").roles("ADMIN");
     }
 
     @Override
@@ -71,9 +74,9 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		return store;
 	}
 
-	@Bean
+	/*@Bean
 	public PasswordEncoder passwordEncoder() {
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
-	
+	*/
 }
