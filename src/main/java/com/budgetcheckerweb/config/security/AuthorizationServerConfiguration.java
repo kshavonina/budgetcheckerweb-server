@@ -5,18 +5,21 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-	private static String REALM="MY_OAUTH_REALM";
+	@Autowired
+	private CorsFilter corsFilter;
 	
 	@Autowired
 	private TokenStore tokenStore;
@@ -47,9 +50,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 				.authenticationManager(authenticationManager);
 	}
 
+	/*
+	VERY IMPORTANT CONFIGURATION: adds CorsFilter to the default filter chain for /oauth/token endpoint
+	 */
 	@Override
-	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-		oauthServer.realm(REALM+"/client");
+	public void configure(AuthorizationServerSecurityConfigurer oauthSecurity) throws Exception {
+		oauthSecurity.addTokenEndpointAuthenticationFilter(corsFilter);
 	}
 
 }
